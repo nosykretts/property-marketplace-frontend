@@ -1,15 +1,19 @@
 <template>
-  <el-card class="box-card">
+  <div>
     <h1>This is Home</h1>
-  </el-card>
+    <house-list/>
+  </div>
 </template>
 
 <script>
+import {mapGetters, mapMutations, mapActions} from 'vuex'
+import HouseList from './HouseList'
+
 export default {
   name: 'Home',
+  components : {HouseList},
   data() {
     return {
-      msg: 'Welcome to Your Vue.js Appax',
     }
   },
 }

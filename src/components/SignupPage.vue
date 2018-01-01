@@ -1,12 +1,19 @@
 <template>
   <el-row type="flex" justify="space-around" align="middle">
-    <div>
-      <el-card class="box-card" style="max-width: 350px">
-        <el-input placeholder="Name" name="name" v-model="name"></el-input>
-        <el-input placeholder="Email" name="email" v-model="email"></el-input>
-        <el-input placeholder="Password" type="password" name="password" v-model="password" style="margin-bottom:20px;"></el-input>
-      </el-card>
-    </div>
+    <el-form label-position="left" status-icon label-width="150px">
+      <el-form-item label="Name" prop="name" >
+        <el-input v-model="name" placeholder="Name"></el-input>
+      </el-form-item>
+      <el-form-item label="Email" prop="email" >
+        <el-input type="email" v-model="email" placeholder="Email"></el-input>
+      </el-form-item>
+      <el-form-item label="Password" prop="pass" >
+        <el-input type="password" v-model="password" placeholder="Password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm">Sign Up</el-button>
+      </el-form-item>
+    </el-form>
   </el-row>
 </template>
 
@@ -16,14 +23,14 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
+      name: null,
       email: null,
       password: null,
-      name: null,
     }
   },
   methods: {
-    register() {
-      this.$store.dispatch('register', {
+    submitForm() {
+      this.$store.dispatch('signup', {
         name: this.name,
         email: this.email,
         password: this.password,

@@ -3,7 +3,6 @@ import router from '@/router'
 import * as types from '../mutation-types'
 
 const state = {
-  errorMessage: null,
   isLoggedIn: localStorage.getItem('token') !== null ? true : false,
 }
 
@@ -12,22 +11,24 @@ const getters = {
 }
 
 const actions = {
-  login({ commit }, { email, password }) {
+  signin({ commit }, { email, password }) {
     axios
       .post('/auth/signin', {
         email,
         password,
       })
       .then(({ data }) => {
-        commit(types.SAVE_TOKEN, {
+        commit(types.saveToken, {
           token: data.data.token,
         })
+        commit('notify/info', 'Sign in success')
+        commit(types.signinSuccess)
       })
       .catch(err => {
-        commit(types.NOTIFY_ERROR, err.response.data.message, { root: true })
+        commit('notify/error', err.response.data.message)
       })
   },
-  register({ commit }, { name, email, password }) {
+  signup({ commit }, { name, email, password }) {
     axios
       .post('/auth/signup', {
         name,
@@ -35,37 +36,36 @@ const actions = {
         password,
       })
       .then(() => {
-        commit(types.NOTIFY_INFO, 'Register success. Please login')
-        commit(types.USER_SIGNUP_SUCCESS)
+        commit('notify/info', 'Signup success. Please login')
+        commit(types.signupSuccess)
       })
       .catch(err => {
-        commit(types.NOTIFY_ERROR, err.response.data.message, { root: true })
+        commit('notify/error', err.response.data.message)
       })
   },
 }
 
 const mutations = {
-  [types.SAVE_TOKEN](state, { token }) {
-    console.log('save token berhasil')
+  [types.signinSuccess](state) {
     state.isLoggedIn = true
+    router.push({ name: 'home' })
+  },
+  [types.signupSuccess](state) {
+    router.push({ name: 'signin' })
+  },
+  [types.saveToken](state, { token }) {
     localStorage.setItem('token', 'Bearer ' + token)
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
-    router.push({ name: 'todoPage' })
   },
-  [types.SIGNIN_FAILURE](state, { message }) {
-  },
-  [types.USER_SIGNUP_SUCCESS](state) {
-    router.push({name: 'loginPage'})
-  },
-  [types.USER_LOGOUT](state) {
+  [types.signout](state) {
     localStorage.removeItem('token')
-    state.isLoggedIn = false
     axios.defaults.headers.common['Authorization'] = 'Bearer jwt'
-    router.push({ name: 'loginPage' })
+    state.isLoggedIn = false
   },
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import SigninPage from '@/components/SigninPage'
 import SignupPage from '@/components/SignupPage'
+import {mapMutations} from 'vuex'
+
 Vue.use(Router)
 
-let commonRoute = [
+let publicRoute = [
   {
     path: '/',
     name: 'home',
@@ -24,6 +26,14 @@ let commonRoute = [
     component: SignupPage,
     meta : {}
   },
+  {
+    path: '/signout',
+    name: 'signout',
+    redirect : to => {
+      
+      return {name:'home'}
+    }
+  },  
 ]
 
 let authRoute = [
@@ -41,7 +51,7 @@ const router = new Router({
   },  
   routes: [
     ...authRoute,
-    ...commonRoute
+    ...publicRoute
   ],
 })
 
@@ -50,20 +60,19 @@ router.beforeEach((to, from, next) => {
     if(localStorage.getItem('token')){
       next()
     }else{
-      next({name:'loginPage'})
+      next({name:'signin'})
     }
   }else{
-    if(to.name == 'loginPage'){
-      if(localStorage.getItem('token')){
-        next({name: 'todoPage'})
-      }else{
-        next()
-      }
-      
+    if(to.name == 'signin' && localStorage.getItem('token')){
+      next(false)
     }else{
       next()
     }
   }
+})
+
+router.onError((err) => {
+  console.log(err.message)
 })
 
 export default router

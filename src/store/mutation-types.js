@@ -3,12 +3,17 @@ export const ADD_TODO = 'ADD_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
 export const UPDATE_TODO = 'UPDATE_TODO'
 export const MARK_TODO = 'MARK_TODO'
-export const SAVE_TOKEN = 'SAVE_TOKEN'
-export const SIGNIN_FAILURE = 'SIGNIN_FAILURE'
 
-export const USER_LOGOUT = 'USER_LOGOUT'
-export const USER_SIGNUP = 'USER_SIGNUP'
-export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS'
+export const signupSuccess = 'SIGNUP_SUCCESS'
+export const signinSuccess = 'SIGNIN_SUCCESS'
+export const signout = 'SIGNOUT'
+export const saveToken = 'SAVE_TOKEN'
 
-export const NOTIFY_INFO = 'NOTIFY_INFO'
-export const NOTIFY_ERROR = 'NOTIFY_ERROR'
+
+export const GET_ALLHOUSES_SUCCESS = 'GET_ALLHOUSES_SUCCESS'
+
+
+export const notifyInfo = 'notify/info'
+export const notifySuccess = 'notify/success'
+export const notifyError = 'notify/error'
+export const notifyWarning = 'notify/warning'

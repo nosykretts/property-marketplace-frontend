@@ -24,10 +24,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     clientLogLevel: 'warning',
     historyApiFallback: true,
     hot: true,
-    compress: false,
+    compress: true,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,
+    disableHostCheck: true,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
       : false,

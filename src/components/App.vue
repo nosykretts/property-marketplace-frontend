@@ -12,14 +12,15 @@
         </el-row>
       </el-main>
       <el-footer>
-        <p>This is Footer</p>
+        <p>This is Footer6</p>
       </el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations, mapState } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters, mapActions, mapMutations, mapState } = createNamespacedHelpers ('notify')
 import { Message } from 'element-ui'
 import TopHeader from '@/components/TopHeader'
 
@@ -32,11 +33,11 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['notify']),
+    ...mapGetters(['message', 'type']),
   },
   methods: {
     showMessage() {
-      Message({ ...this.notify })
+      Message({ message: this.message, type: this.type })
     },
   },
   watch: {
@@ -53,6 +54,8 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background: #f1f1f1;
+  font-family: 'Open Sans', sans-serif;
 }
 </style>
 

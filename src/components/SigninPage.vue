@@ -1,12 +1,16 @@
 <template>
   <el-row type="flex" justify="space-around" align="middle">
-    <div>
-      <el-card class="box-card" style="max-width: 350px">
-        <el-input placeholder="Email" name="email" v-model="email"></el-input>
-        <el-input placeholder="Password" type="password" name="password" v-model="password" style="margin-bottom:20px;"></el-input>
-        <el-button @click="login" class="beauty" style="width:100%; height:50px;">Login</el-button>
-      </el-card>
-    </div>
+    <el-form label-position="left" status-icon label-width="150px">
+      <el-form-item label="Email" prop="email">
+        <el-input type="email" v-model="email" placeholder="Email"></el-input>
+      </el-form-item>
+      <el-form-item label="Password" prop="pass">
+        <el-input type="password" v-model="password" placeholder="Password"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="login">Sign In</el-button>
+      </el-form-item>
+    </el-form>
   </el-row>
 </template>
 
@@ -16,11 +20,7 @@ export default {
   data() {
     return {
       email: null,
-      password: null,
-      fbSignInParams: {
-        scope: 'public_profile,email',
-        return_scopes: true,
-      },
+      password: null
     }
   },
   methods: {
