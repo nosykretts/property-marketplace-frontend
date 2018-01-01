@@ -11,7 +11,7 @@ export const saveToken = 'SAVE_TOKEN'
 
 
 export const GET_ALLHOUSES_SUCCESS = 'GET_ALLHOUSES_SUCCESS'
-
+export const getHouseSuccess = 'GET_HOUSE_SUCCESS'
 
 export const notifyInfo = 'notify/info'
 export const notifySuccess = 'notify/success'

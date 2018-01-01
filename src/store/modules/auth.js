@@ -21,11 +21,11 @@ const actions = {
         commit(types.saveToken, {
           token: data.data.token,
         })
-        commit('notify/info', 'Sign in success')
+        commit('notify/info', 'Sign in success', { root: true })
         commit(types.signinSuccess)
       })
       .catch(err => {
-        commit('notify/error', err.response.data.message)
+        commit('notify/error', err.response.data.message, { root: true })
       })
   },
   signup({ commit }, { name, email, password }) {
@@ -36,11 +36,11 @@ const actions = {
         password,
       })
       .then(() => {
-        commit('notify/info', 'Signup success. Please login')
+        commit('notify/info', 'Signup success. Please login', { root: true })
         commit(types.signupSuccess)
       })
       .catch(err => {
-        commit('notify/error', err.response.data.message)
+        commit('notify/error', err.response.data.message, { root: true })
       })
   },
 }
@@ -48,7 +48,7 @@ const actions = {
 const mutations = {
   [types.signinSuccess](state) {
     state.isLoggedIn = true
-    router.push({ name: 'home' })
+    router.push({ name: 'myHome' })
   },
   [types.signupSuccess](state) {
     router.push({ name: 'signin' })

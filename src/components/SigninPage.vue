@@ -8,7 +8,7 @@
         <el-input type="password" v-model="password" placeholder="Password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="login">Sign In</el-button>
+        <el-button type="primary" @click="signin">Sign In</el-button>
       </el-form-item>
     </el-form>
   </el-row>
@@ -24,8 +24,8 @@ export default {
     }
   },
   methods: {
-    login() {
-      this.$store.dispatch('login', {
+    signin() {
+      this.$store.dispatch('auth/signin', {
         email: this.email,
         password: this.password,
       })

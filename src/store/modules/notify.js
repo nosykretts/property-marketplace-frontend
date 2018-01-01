@@ -1,28 +1,39 @@
 const state = {
-  message: '',
-  type: '',
+  notify: {
+    message: '',
+    type: '',
+    rand: '',
+  },
 }
 
 const getters = {
-  message: state => state.message,
-  type: state => state.type,
+  notify : state => state.notify
 }
 
 const mutations = {
   info(state, message) {
-    state.message = message
-    state.type = 'info'
+    state.notify = {
+      message,
+      type: 'info',
+    }
   },
   success(state, message) {
-    state.message = message
-    state.type = 'success'
+    state.notify = {
+      message,
+      type: 'success',
+    }
   },
   warning(state, message) {
-    ;(state.message = message), (state.type = 'warning')
+    state.notify = {
+      message,
+      type: 'warning',
+    }
   },
   error(state, message) {
-    state.message = message
-    state.type = 'error'
+    state.notify = {
+      message,
+      type: 'error',
+    }
   },
 }
 

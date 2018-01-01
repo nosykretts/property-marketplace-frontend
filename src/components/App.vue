@@ -33,17 +33,20 @@ export default {
     return {}
   },
   computed: {
-    ...mapGetters(['message', 'type']),
+    ...mapGetters(['notify']),
   },
   methods: {
     showMessage() {
-      Message({ message: this.message, type: this.type })
+      Message({ ...this.notify})
     },
   },
   watch: {
-    notify() {
-      this.showMessage()
-    },
+    notify: {
+      deep: true,
+      handler : function() {
+        this.showMessage()
+      }
+    }
   },
 
 }

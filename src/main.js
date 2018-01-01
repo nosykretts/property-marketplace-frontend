@@ -16,7 +16,7 @@ axios.defaults.baseURL = 'http://x.fajarpatappari.tk:3000/api';
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
 
 Vue.use(Vuex)
-Vue.use(ElementUI, {size: 'small'})
+Vue.use(ElementUI, {size: 'large'})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

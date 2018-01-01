@@ -1,20 +1,35 @@
 <template>
-  <el-card :body-style="{ padding: '0px'}">
-    <div class="image" :style="{'background-image': 'url('+ house.photos[0] + ')'}"></div>
-    <div style="padding: 14px;">
-      <span>{{house.title}}</span>
-      <div class="bottom clearfix">
-        <time class="time">03-01-1990</time>
-        <el-button type="text" class="button">View Details</el-button>
+  <transition name="el-fade-in">
+
+    <el-card :body-style="{ padding: '0px'}">
+      <transition name="el-fade-in">
+        <div class="image" :style="{'background-image': 'url('+ house.photos[0] + ')'}"></div>
+      </transition>
+      <div style="padding: 14px;">
+        <span>{{house.title}}</span>
+        <div class="bottom clearfix">
+          <time class="time">{{house.price}}</time>
+          <el-button type="text" class="button" @click="viewDetails">View details</el-button>
+        </div>
       </div>
-    </div>
-  </el-card>
+    </el-card>
+  </transition>
 </template>
 
 <script>
 export default {
   name: 'HouseItemCard',
   props: ['house'],
+  methods: {
+    viewDetails() {
+      this.$router.push({
+        name: 'houseDetail',
+        params: {
+          id: this.house._id,
+        },
+      }) // -> /user/123
+    },
+  },
 }
 </script>
 

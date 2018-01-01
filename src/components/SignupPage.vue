@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     submitForm() {
-      this.$store.dispatch('signup', {
+      this.$store.dispatch('auth/signup', {
         name: this.name,
         email: this.email,
         password: this.password,
