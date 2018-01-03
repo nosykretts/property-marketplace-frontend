@@ -30,8 +30,6 @@ export default {
 </script>
 
 <style>
-.houses-container{
-  flex-wrap: wrap;
-}
+
 </style>
 

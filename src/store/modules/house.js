@@ -3,12 +3,14 @@ import * as types from '../mutation-types'
 
 const state = {
   houses: [],
-  house : {}
+  myHouses : [],
+  house : {},
 }
 
 const getters = {
   houses: state => state.houses,
-  house : state => state.house
+  myHouses: state => state.myHouses,
+  house : state => state.house,
 }
 
 const actions = {
@@ -16,31 +18,59 @@ const actions = {
     axios
       .get('/houses')
       .then(({ data }) => {
+        
         commit(types.GET_ALLHOUSES_SUCCESS, {
           houses : data.data
         })
+        
+        
+      })
+      .catch(err => {
+       
+        console.log(err.response.data.message)
+        
+      })
+  },
+  getMyHouses ({commit}) {
+  
+    axios
+      .get('/user/houses')
+      .then(({ data }) => {
+        commit(types.getMyHousesSuccess, {
+          houses : data.data
+        })
+        
       })
       .catch(err => {
         console.log(err.response.data.message)
-      })
+        
+      })    
   },
   getHouse({commit}, {id}) {
-    axios
-    .get(`houses/${id}`)
-    .then(({ data }) => {
-      commit(types.getHouseSuccess, {
-        house : data.data
-      })
-    })
-    .catch(err => {
-      console.log(err.response.data.message)
-    })
+    return new Promise((resolve, reject) => {
+        axios
+        .get(`houses/${id}`)
+        .then(({ data }) => {
+          commit(types.getHouseSuccess, {
+            house : data.data
+          })
+          resolve(data.data)
+        })
+        .catch(err => {
+          console.log(err.response.data.message)
+          reject(err)
+        })      
+    })    
+
   }
 }
 
 const mutations = {
   [types.GET_ALLHOUSES_SUCCESS](state,{houses}){
     state.houses = houses
+  },
+  [types.getMyHousesSuccess](state, {houses}){
+    state.myHouses = houses
   },
   [types.getHouseSuccess](state, {house}){
     state.house = house

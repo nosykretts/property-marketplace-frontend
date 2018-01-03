@@ -7,7 +7,8 @@ import HouseDetailPage from '@/components/HouseDetailPage'
 import Dashboard from '@/components/Dashboard'
 import MyHouses from "@/components/MyHouses";
 import MyHome from "@/components/MyHome";
-
+import MyHouseList from "@/components/MyHouseList"
+import HouseForm from "@/components/HouseForm";
 import { mapMutations } from 'vuex'
 
 Vue.use(Router)
@@ -42,10 +43,8 @@ let publicRoute = [
 let authRoute = [
   {
     path: '/my',
-    
     component: Dashboard,
     meta: { requireAuth: true },
-   
     children: [
       {
         path: '',
@@ -54,8 +53,27 @@ let authRoute = [
       },
       {
         path: 'houses',
-        name: 'myHouses',
         component: MyHouses,
+        children : [
+          {
+            path: '',
+            name: 'myHouseList',
+            component: MyHouseList,
+            props: true,
+          },          
+          {
+            path: 'edit/:id',
+            name: 'houseEdit',
+            component: HouseForm,
+            props: true,
+          },
+          {
+            path: 'create',
+            name: 'houseCreate',
+            component: HouseForm,
+            props: true,
+          }, 
+        ]
       },
       {
         path: 'houses/:id',

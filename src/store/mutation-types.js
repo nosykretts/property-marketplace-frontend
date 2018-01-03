@@ -10,7 +10,8 @@ export const signout = 'SIGNOUT'
 export const saveToken = 'SAVE_TOKEN'
 
 
-export const GET_ALLHOUSES_SUCCESS = 'GET_ALLHOUSES_SUCCESS'
+export const GET_ALLHOUSES_SUCCESS = 'GET_ALL_SUCCESS'
+export const getMyHousesSuccess = 'GET_MY_SUCCESS'
 export const getHouseSuccess = 'GET_HOUSE_SUCCESS'
 
 export const notifyInfo = 'notify/info'

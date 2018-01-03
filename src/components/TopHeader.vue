@@ -3,7 +3,7 @@
     <el-menu-item index="/">Home</el-menu-item>
     <el-menu-item v-show="!isLoggedIn" index="/signin">Sign In</el-menu-item>
     <el-menu-item v-show="!isLoggedIn" index="/signup">Sign Up</el-menu-item>
-    <el-menu-item v-show="isLoggedIn" index="/my">My Index</el-menu-item>
+    <el-menu-item v-show="isLoggedIn" index="/my">Dashboard</el-menu-item>
     <el-menu-item v-show="isLoggedIn" @click="doSignout" index="/signout">Sign Out</el-menu-item>
   </el-menu>
 </template>

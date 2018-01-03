@@ -60,6 +60,9 @@ body {
   background: #f1f1f1;
   font-family: 'Open Sans', sans-serif;
 }
+.houses-container{
+  flex-wrap: wrap;
+}
 </style>
 
 

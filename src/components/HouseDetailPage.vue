@@ -7,12 +7,13 @@
     </el-card>
     <el-tabs type="border-card" tab-position="top">
       <el-tab-pane>
-ous          <i class="el-icon-menu"></i> Specification Detail</span>
+        <span slot="label">
+          <i class="el-icon-menu"></i> Specification Detail</span>
         <el-row :gutter="20">
           <el-col>
             <table>
-               <tbody>
-                 
+              <tbody>
+
               </tbody>
             </table>
           </el-col>
