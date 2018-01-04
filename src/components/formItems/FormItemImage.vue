@@ -66,32 +66,4 @@ export default {
   width: 148px;
   display: flex;
 }
-
-.hellow > span > i {
-  /* background: gold; */
-  zoom: 2;
-}
-
-.fileContainer {
-  overflow: hidden;
-  position: relative;
-}
-
-.fileContainer [type='file'] {
-  cursor: inherit;
-  display: block;
-  font-size: 999px;
-  filter: alpha(opacity=0);
-  min-height: 100%;
-  min-width: 100%;
-  opacity: 0;
-  position: absolute;
-  right: 0;
-  text-align: right;
-  top: 0;
-}
-
-.el-upload-dragger{
-  /* width: 100%; */
-}
 </style>

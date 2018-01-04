@@ -38,13 +38,28 @@ const actions = {
       .then(({ data }) => {
         commit(types.getMyHousesSuccess, {
           houses : data.data
-        })
-        
+        })  
       })
       .catch(err => {
         console.log(err.response.data.message)
-        
       })    
+  },
+  createHouse({commit}, p){
+    let formData = new FormData()
+
+
+    p.photos.fileList.forEach(file => {
+      formData.append('newPhotos', file)
+    })
+
+    axios
+    .post('/user/houses', formData)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(err => {
+      console.log(err.response.data.message)
+    }) 
   },
   getHouse({commit}, {id}) {
     return new Promise((resolve, reject) => {

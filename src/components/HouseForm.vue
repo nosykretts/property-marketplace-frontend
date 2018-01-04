@@ -101,6 +101,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if(!valid) return false
         console.log(this.ruleForm)
+        this.$store.dispatch('house/createHouse', this.ruleForm)
       })
     },
     updateValue(){
