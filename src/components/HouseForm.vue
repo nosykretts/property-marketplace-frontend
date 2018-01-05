@@ -62,9 +62,6 @@
         <el-button type="primary" @click="submitForm('ruleForm')">{{id? 'Update': 'Create'}}</el-button>
       </el-form-item>
     </el-form>
-    <br>
-    <hr>
-    <pre>{{JSON.stringify(ruleForm,null,2)}}</pre>
   </div>
 </template>
 
