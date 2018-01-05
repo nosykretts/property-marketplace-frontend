@@ -1,7 +1,5 @@
 <template>
   <div>
-    <h1>My House</h1>
-    <hr>
     <router-view></router-view>
   </div>
 </template>

@@ -18,13 +18,20 @@ export default {
   name: 'HouseList',
   components: { HouseItemCard },
   mounted(){
-    this.getHouses()
+    if(!this.$route.query.search){
+      this.getHouses()
+      }
+      
   },
   computed: {
     ...mapGetters(['houses']),
   },
   methods: {
-    ...mapActions(['getHouses']),
+    getHouses(){
+      this.$store.dispatch('house/getHouses', {
+        search : null
+      })
+    }
   },
 }
 </script>

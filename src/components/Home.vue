@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h1>This is Home</h1>
-
+    <big-search/>
     <house-list/>
+    
   </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import HouseList from './HouseList'
-
+import BigSearch from '@/components/BigSearch'
 export default {
   name: 'Home',
-  components: { HouseList },
+  components: { HouseList, BigSearch },
   data() {
     return {}
   },

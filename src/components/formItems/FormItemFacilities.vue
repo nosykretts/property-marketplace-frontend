@@ -1,5 +1,5 @@
 <template>
-  <el-form-item label="Facilities">
+  <el-form-item label="Facilities" props="facilities">
     <el-select
       style="width: 100%;"
       v-model="value10"
@@ -8,7 +8,7 @@
       filterable
       allow-create
       default-first-option
-      placeholder="Choose your house facilities">
+      placeholder="Choose or add your house facilities">
       <el-option
         v-for="item in options5"
         :key="item.value"
@@ -25,13 +25,19 @@
     name : 'FormItemFacilities',
     props : ['value'],
     data() {
-      return {
-        options5: [
+      let opt = [
           ...this.value,
           ...defaultFacilities
-        ].map(fas => {
-          return {value: fas, label: fas}
-        }),
+        ]
+        .filter((fas, index, arr) => {
+          return arr.indexOf(fas) === index
+        })
+        .map(fas => {
+          return {label: fas, value: fas}
+        })
+        console.log('opt',opt)
+      return {
+        options5: opt,
         value10: this.value
       }
     },

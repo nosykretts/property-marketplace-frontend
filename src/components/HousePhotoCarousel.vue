@@ -1,5 +1,5 @@
 <template>
-  <el-carousel :interval="4000"  :autoplay="false" trigger="click">
+  <el-carousel  :interval="4000"  :autoplay="false" trigger="click">
     <el-carousel-item v-for="photoUrl in photos" :key="photoUrl">
       <img :src="photoUrl"/>
     </el-carousel-item>

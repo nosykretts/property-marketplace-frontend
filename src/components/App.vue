@@ -4,7 +4,7 @@
       <el-header >
         <top-header></top-header>
       </el-header>
-      <el-main>
+      <el-main style="min-height: 100vh;">
         <el-row :gutter="0">
           <el-col :xs="{span:24}" :sm="{span:24}" :md="{span: 24}">
             <router-view></router-view>
@@ -12,7 +12,7 @@
         </el-row>
       </el-main>
       <el-footer>
-        <p>This is Footer6</p>
+        <p>Build with Love @hacktiv8</p>
       </el-footer>
     </el-container>
   </div>
@@ -62,6 +62,7 @@ body {
 }
 .houses-container{
   flex-wrap: wrap;
+  justify-content: flex-start !important;
 }
 </style>
 

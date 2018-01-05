@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3>My Houses List</h3>
+   
     <el-button @click="createClicked">Sell New House</el-button>
     <hr>
-    <el-row :gutter="20" type="flex" justify="space-between" class="houses-container">
+    <el-row :gutter="20" type="flex" justify="space-between" class="houses-container" v-loading="false">
       <el-col :xs="{span:24}" :sm="{span:12}" :md="{span:8}" :lg="{span:6}" :xl="{span:4}" v-for="(house, index) in myHouses" :key="house._id" :nomor="index" style="margin-bottom: 20px">
         <house-item-card :house="house" :nomor="index">
           <div slot="user-toolbox">
@@ -43,7 +43,7 @@ export default {
       })      
     },
     deleteClicked(id){
-      
+      this.$store.dispatch('house/deleteHouse', {id})
     }
   },
   computed: {

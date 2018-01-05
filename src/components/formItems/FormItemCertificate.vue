@@ -1,6 +1,6 @@
 <template>
   <el-form-item label="Certification" prop="certification">
-    <el-select v-model="certification" placeholder="Select" @change="selectChanged">
+    <el-select v-model="certification" placeholder="Select" @change="selectChanged" style="min-width:300px;">
       <el-option v-for="item in certificationOptions" :key="item.value" :label="item.label" :value="item.value">
       </el-option>
     </el-select>
@@ -21,24 +21,24 @@ export default {
       certification: this.value,
       certificationOptions: [
           {
-            value: 'CERT-A',
-            label: 'CERT-A',
+            value: 'Sertifikat Hak Milik (SHM)',
+            label: 'Sertifikat Hak Milik (SHM)',
           },
           {
-            value: 'CERT-B',
-            label: 'CERT-B',
+            value: 'Sertifikat Hak Guna Bangunan (SHGB)',
+            label: 'Sertifikat Hak Guna Bangunan (SHGB)',
           },
           {
-            value: 'CERT-C',
-            label: 'CERT-C',
+            value: 'Girik',
+            label: 'Girik',
           },
           {
-            value: 'CERT-D',
-            label: 'CERT-D',
+            value: 'Akta Jual Beli (AJB)',
+            label: 'Akta Jual Beli (AJB)',
           },
           {
-            value: 'CERT-E',
-            label: 'CERT-E',
+            value: 'Other',
+            label: 'Other',
           },
         ],      
     }
