@@ -25,16 +25,17 @@ export default {
       this.$router.push({
         name: 'houseDetail',
         params: {
+          // eslint-disable-next-line no-underscore-dangle
           id: this.house._id,
         },
       }) // -> /user/123
     },
   },
-  computed : {
-    prettyPrice(){
-      return this.house.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-  }
+  computed: {
+    prettyPrice() {
+      return this.house.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    },
+  },
 }
 </script>
 

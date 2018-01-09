@@ -8,8 +8,8 @@
 
 <script>
 export default {
-  name : 'HousePhotoCarousel',
-  props : ['photos']
+  name: 'HousePhotoCarousel',
+  props: ['photos'],
 }
 </script>
 

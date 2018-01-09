@@ -6,23 +6,23 @@
 
 <script>
 export default {
-  name : 'HouseDetailMap',
-  props : ['house'],
-  mounted(){
+  name: 'HouseDetailMap',
+  props: ['house'],
+  mounted() {
     this.mapCenter = {
       lat: this.house.loc.coordinates[1],
-      lng : this.house.loc.coordinates[0]
+      lng: this.house.loc.coordinates[0],
     }
     this.marker = {
-      position : this.mapCenter
+      position: this.mapCenter,
     }
   },
-  data(){
+  data() {
     return {
-      mapCenter : null,
-      marker: null
+      mapCenter: null,
+      marker: null,
     }
-  }
+  },
 }
 </script>
 

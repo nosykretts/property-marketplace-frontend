@@ -11,38 +11,38 @@
 export default {
   name: 'FormItemCertificate',
   props: ['value'],
-  methods:{
-    selectChanged(){
+  methods: {
+    selectChanged() {
       this.$emit('input', this.certification)
-    }
+    },
   },
-  data (){
+  data() {
     return {
       certification: this.value,
       certificationOptions: [
-          {
-            value: 'Sertifikat Hak Milik (SHM)',
-            label: 'Sertifikat Hak Milik (SHM)',
-          },
-          {
-            value: 'Sertifikat Hak Guna Bangunan (SHGB)',
-            label: 'Sertifikat Hak Guna Bangunan (SHGB)',
-          },
-          {
-            value: 'Girik',
-            label: 'Girik',
-          },
-          {
-            value: 'Akta Jual Beli (AJB)',
-            label: 'Akta Jual Beli (AJB)',
-          },
-          {
-            value: 'Other',
-            label: 'Other',
-          },
-        ],      
+        {
+          value: 'Sertifikat Hak Milik (SHM)',
+          label: 'Sertifikat Hak Milik (SHM)',
+        },
+        {
+          value: 'Sertifikat Hak Guna Bangunan (SHGB)',
+          label: 'Sertifikat Hak Guna Bangunan (SHGB)',
+        },
+        {
+          value: 'Girik',
+          label: 'Girik',
+        },
+        {
+          value: 'Akta Jual Beli (AJB)',
+          label: 'Akta Jual Beli (AJB)',
+        },
+        {
+          value: 'Other',
+          label: 'Other',
+        },
+      ],
     }
   },
-  
+
 }
 </script>

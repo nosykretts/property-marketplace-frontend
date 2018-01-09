@@ -25,26 +25,26 @@ const { mapGetters, mapActions } = createNamespacedHelpers('house')
 
 export default {
   name: 'MyHouses',
-  components : {HouseItemCard},
+  components: { HouseItemCard },
   mounted() {
     this.getMyHouses()
   },
   methods: {
     ...mapActions(['getMyHouses']),
-    editClicked(id){
+    editClicked(id) {
       this.$router.push({
         name: 'houseEdit',
-        params : {id}
+        params: { id },
       })
     },
-    createClicked(){
+    createClicked() {
       this.$router.push({
-        name: 'houseCreate'
-      })      
+        name: 'houseCreate',
+      })
     },
-    deleteClicked(id){
-      this.$store.dispatch('house/deleteHouse', {id})
-    }
+    deleteClicked(id) {
+      this.$store.dispatch('house/deleteHouse', { id })
+    },
   },
   computed: {
     ...mapGetters(['myHouses']),

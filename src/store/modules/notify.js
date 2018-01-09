@@ -7,7 +7,7 @@ const state = {
 }
 
 const getters = {
-  notify : state => state.notify
+  notify: state => state.notify,
 }
 
 const mutations = {

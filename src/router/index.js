@@ -5,15 +5,14 @@ import SigninPage from '@/components/SigninPage'
 import SignupPage from '@/components/SignupPage'
 import HouseDetailPage from '@/components/HouseDetailPage'
 import Dashboard from '@/components/Dashboard'
-import MyHouses from "@/components/MyHouses";
-import MyHome from "@/components/MyHome";
-import MyHouseList from "@/components/MyHouseList"
-import HouseForm from "@/components/HouseForm";
-import { mapMutations } from 'vuex'
+import MyHouses from '@/components/MyHouses';
+import MyHome from '@/components/MyHome';
+import MyHouseList from '@/components/MyHouseList'
+import HouseForm from '@/components/HouseForm';
 
 Vue.use(Router)
 
-let publicRoute = [
+const publicRoute = [
   {
     path: '/',
     name: 'home',
@@ -40,7 +39,7 @@ let publicRoute = [
   },
 ]
 
-let authRoute = [
+const authRoute = [
   {
     path: '/my',
     component: Dashboard,
@@ -54,13 +53,13 @@ let authRoute = [
       {
         path: 'houses',
         component: MyHouses,
-        children : [
+        children: [
           {
             path: '',
             name: 'myHouseList',
             component: MyHouseList,
             props: true,
-          },          
+          },
           {
             path: 'edit/:id',
             name: 'houseEdit',
@@ -72,8 +71,8 @@ let authRoute = [
             name: 'houseCreate',
             component: HouseForm,
             props: true,
-          }, 
-        ]
+          },
+        ],
       },
       {
         path: 'houses/:id',
@@ -85,14 +84,9 @@ let authRoute = [
   },
 ]
 
-authRoute = authRoute.map(route => {
-  route.meta.requireAuth = true
-  return route
-})
-
 const router = new Router({
   mode: 'history',
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     return { x: 0, y: 0 }
   },
   routes: [...authRoute, ...publicRoute],
@@ -105,16 +99,14 @@ router.beforeEach((to, from, next) => {
     } else {
       next({ name: 'signin' })
     }
+  } else if (to.name === 'signin' && localStorage.getItem('token')) {
+    next(false)
   } else {
-    if (to.name == 'signin' && localStorage.getItem('token')) {
-      next(false)
-    } else {
-      next()
-    }
+    next()
   }
 })
 
-router.onError(err => {
+router.onError((err) => {
   console.log(err.message)
 })
 

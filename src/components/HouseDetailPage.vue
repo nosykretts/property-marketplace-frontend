@@ -47,19 +47,20 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-import HousePhotoCarousel from './HousePhotoCarousel'
-import BigSearch from '@/components/BigSearch'
 import HouseDetailCounter from '@/components/HouseDetail/HouseDetailCounter'
 import HouseDetailMap from '@/components/HouseDetail/HouseDetailMap'
-const { mapGetters, mapActions } = createNamespacedHelpers('house')
+import BigSearch from '@/components/BigSearch'
+import HousePhotoCarousel from './HousePhotoCarousel'
+
+const { mapGetters } = createNamespacedHelpers('house')
 
 export default {
   name: 'HouseDetailPage',
   props: ['id'],
   components: { HousePhotoCarousel, BigSearch, HouseDetailCounter, HouseDetailMap },
-  data(){
+  data() {
     return {
-      loaded: false
+      loaded: false,
     }
   },
   mounted() {
@@ -74,15 +75,15 @@ export default {
   },
   computed: {
     ...mapGetters(['house']),
-    prettyPrice(){
-      return this.house.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
+    prettyPrice() {
+      return this.house.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    },
   },
-  watch : {
-    house(){
+  watch: {
+    house() {
       this.loaded = true
-    }
-  }
+    },
+  },
 }
 </script>
 

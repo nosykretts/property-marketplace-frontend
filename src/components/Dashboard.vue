@@ -8,22 +8,22 @@
 
 <script>
 export default {
-  name : 'Dashboard',
-  mounted(){
+  name: 'Dashboard',
+  mounted() {
     this.activeName = this.$router.currentRoute.name
   },
-  data(){
+  data() {
     return {
-      activeName : 'myHome'
+      activeName: 'myHome',
     }
   },
-  methods : {
-    tabClicked(tab){
+  methods: {
+    tabClicked(tab) {
       this.$router.push({
-        name : tab.name
+        name: tab.name,
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
