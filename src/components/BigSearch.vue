@@ -7,33 +7,34 @@
 
 <script>
 import debounce from 'debounce'
+
 export default {
-  name : 'BigSearch',
-  mounted(){
+  name: 'BigSearch',
+  mounted() {
     this.inputSearch = this.$route.query.search || ''
   },
-  data(){
+  data() {
     return {
-      inputSearch : '',
-      selectme : '1'
+      inputSearch: '',
+      selectme: '1',
     }
   },
-  methods : {
-    searchChanged : debounce(function() {
-      if(this.inputSearch.trim() == ''){
+  methods: {
+    searchChanged: debounce(() => {
+      if (this.inputSearch.trim() === '') {
         this.$router.push('/')
         this.$store.dispatch('house/getHouses', {
-          search : null
+          search: null,
         })
-      }else{
-        this.$router.push({name: 'home',query: {search: this.inputSearch}})
+      } else {
+        this.$router.push({ name: 'home', query: { search: this.inputSearch } })
         this.$store.dispatch('house/getHouses', {
-          search : this.inputSearch
+          search: this.inputSearch,
         })
       }
       console.log(this.inputSearch)
-    }, 600)
-  }
+    }, 600),
+  },
 }
 </script>
 

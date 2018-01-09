@@ -72,16 +72,16 @@ import FormItemCertificate from '@/components/formItems/FormItemCertificate'
 import FormItemImage from '@/components/formItems/FormItemImage'
 import FormItemLocation from '@/components/formItems/FormItemLocation'
 
-const { mapGetters, mapActions } = createNamespacedHelpers('house')
+const { mapGetters } = createNamespacedHelpers('house')
 
 export default {
   name: 'HouseForm',
   props: ['mode', 'id'],
-  components : {FormItemFacilities, FormItemCertificate, FormItemImage, FormItemLocation},
+  components: { FormItemFacilities, FormItemCertificate, FormItemImage, FormItemLocation },
   mounted() {
     if (this.id) {
       this.getHouse()
-    }else{
+    } else {
       this.editLoaded = true
     }
   },
@@ -92,55 +92,56 @@ export default {
       })
     },
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
-        if(!valid) return false
+      this.$refs[formName].validate((valid) => {
+        if (!valid) return false
         console.log(this.ruleForm)
-        if(this.id){
+        if (this.id) {
           this.$store.dispatch('house/editHouse', {
-            id : this.id,
-            form : this.ruleForm
+            id: this.id,
+            form: this.ruleForm,
           })
-          .then(()=>{
-            this.$router.push({name: 'myHouseList'})
+          .then(() => {
+            this.$router.push({ name: 'myHouseList' })
           })
           .catch()
-        }else{
+        } else {
           this.$store.dispatch('house/createHouse', {
-            form : this.ruleForm
+            form: this.ruleForm,
           })
-          .then(()=>{
-            this.$router.push({name: 'myHouseList'})
+          .then(() => {
+            this.$router.push({ name: 'myHouseList' })
           })
           .catch()
         }
+        return true
       })
     },
-    reValidate(){
-      this.$refs['ruleForm'].validate(valid => {})
+    reValidate() {
+      this.$refs.ruleForm.validate(() => {})
     },
-    updateValue(){
+    updateValue() {
       this.ruleForm = JSON.parse(JSON.stringify(this.house))
       this.ruleForm.coordsAddress = {
-        coordinates : this.house.loc.coordinates, // longlat
-        address : this.house.address,
+        coordinates: this.house.loc.coordinates, // longlat
+        address: this.house.address,
       }
       this.ruleForm.photosFileList = {
-        photos : this.house.photos,
-        fileList : []
+        photos: this.house.photos,
+        fileList: [],
       }
       this.editLoaded = true
-    }
+    },
   },
   computed: {
-    ...mapGetters(['house'])
+    ...mapGetters(['house']),
   },
   watch: {
-    house : {
+    house: {
       deep: true,
-      handler: function(){
+      handler() {
         this.updateValue()
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -159,20 +160,20 @@ export default {
         garageCount: 0,
         carportCount: 0,
         facilities: [],
-        contact : {
-          name : '',
-          phoneNumber : '',
+        contact: {
+          name: '',
+          phoneNumber: '',
         },
         photos: [],
-        photosFileList : {
-          photos : [],
-          fileList : [],
-          counter: 0
+        photosFileList: {
+          photos: [],
+          fileList: [],
+          counter: 0,
         },
-        coordsAddress : {
-          coordinates : [null,null], // longlat
-          address : '',
-        }
+        coordsAddress: {
+          coordinates: [null, null], // longlat
+          address: '',
+        },
       },
       rules: {
         // title: [
@@ -193,22 +194,22 @@ export default {
         //   },
         // ],
         price: [
-          { required: true},
-          { type: 'number'},
+          { required: true },
+          { type: 'number' },
         ],
         certification: [
-          {required: true}
+          { required: true },
         ],
         photosFileList: {
-          validator : (rule, value, cb) => {
-            if(value.counter == 0) {
+          validator: (rule, value, cb) => {
+            if (value.counter === 0) {
               cb(new Error('Need minimum one photo'))
-            }else{
+            } else {
               cb()
             }
-          }
+          },
         },
-        
+
       },
     }
   },

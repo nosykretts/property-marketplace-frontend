@@ -28,10 +28,10 @@ export default {
   name: 'FormItemLocation',
   props: ['value'], // {coordinates :[], address : ''}
   mounted() {
-    if(this.value.coordinates[0]){
-      this.mapCenter = { 
+    if (this.value.coordinates[0]) {
+      this.mapCenter = {
         lat: this.value.coordinates[1],
-        lng: this.value.coordinates[0] 
+        lng: this.value.coordinates[0],
       }
       this.address = this.value.address
       this.zoom = 15
@@ -42,44 +42,44 @@ export default {
   },
   data() {
     return {
-      zoom : 4,
-      address : '',
+      zoom: 4,
+      address: '',
       mapCenter: { lat: -2.4931308132648247, lng: 118.47106932500003 },
       marker: null,
-      ruleCoords : {
-        validator : (rule, value, cb) => {
-          if(this.marker){
+      ruleCoords: {
+        validator: (rule, value, cb) => {
+          if (this.marker) {
             cb()
-          }else{
+          } else {
             cb(new Error('Select you house location on map'))
           }
-        }
+        },
       },
-      ruleAddress : {
-        trigger : 'blur',
-        validator : (rule, value, cb) => {
-          if(this.address.length > 3) {
+      ruleAddress: {
+        trigger: 'blur',
+        validator: (rule, value, cb) => {
+          if (this.address.length > 3) {
             cb()
-          }else {
+          } else {
             cb(new Error('Address required'))
           }
-        }
-      }
+        },
+      },
     }
   },
   methods: {
-    debounceMe: debounce(function(fn){fn()}, 1000),
+    debounceMe: debounce((fn) => { fn() }, 1000),
     locationChanged() {
       this.$emit('input', {
-        coordinates : [this.mapCenter.lng, this.mapCenter.lat],
-        address : this.address
+        coordinates: [this.mapCenter.lng, this.mapCenter.lat],
+        address: this.address,
       })
     },
     searchChanged(place) {
       this.zoom = 15
       this.address = place.formatted_address
       this.centerChanged(place.geometry.location)
-    },    
+    },
     centerChanged(newCenter) {
       this.marker = {
         position: this.mapCenter,

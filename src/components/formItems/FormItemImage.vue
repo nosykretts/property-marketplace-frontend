@@ -8,7 +8,7 @@
         <i class="el-icon-plus"></i> Add Photos</div>
     </label> -->
    <!-- <el-input v-model.number="counter"></el-input> -->
-    <div v-for="photoUrl in thumbs" @click="deletePhoto(photoUrl)"  class="hai" :style="{backgroundImage: 'url('+ photoUrl +')'}"></div>
+    <div v-for="photoUrl in thumbs" @click="deletePhoto(photoUrl)"  class="hai" :style="{backgroundImage: 'url('+ photoUrl +')'}" :key="photoUrl"></div>
     <el-upload  action="" :on-remove="fileInputChanged" :on-change="fileInputChanged" list-type="picture-card" :auto-upload="false" multiple class="photo-uploader">
       <i class="el-icon-plus"></i>
     </el-upload>
@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       photos: [...this.value.photos],
-      thumbs : [...this.value.photos],
-      fileList : []
+      thumbs: [...this.value.photos],
+      fileList: [],
     }
   },
   methods: {
@@ -33,18 +33,18 @@ export default {
       this.fileList = fileList.map(obj => obj.raw)
       this.emitInput()
     },
-    emitInput(){
+    emitInput() {
       this.$emit('input', {
-        photos : this.photos,
-        fileList : this.fileList,
-        counter : this.fileList.length + this.photos.length,
+        photos: this.photos,
+        fileList: this.fileList,
+        counter: this.fileList.length + this.photos.length,
       })
     },
-    deletePhoto(photoUrl){
+    deletePhoto(photoUrl) {
       this.photos = this.photos.filter(photo => photo !== photoUrl)
       this.thumbs = this.photos
       this.emitInput()
-    }
+    },
     // x(e) {
     //   console.log('fileInputChanged', e.target.files)
     //   this.fileList = e.target.files

@@ -14,22 +14,22 @@ import App from './components/App'
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'http://api.fajarpatappari.tk:3001/api';
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
+axios.defaults.headers.common.Authorization = localStorage.getItem('token')
 Vue.use(VueGoogleMaps, {
   load: {
     key: process.env.GOOGLE_API_KEY,
     libraries: 'places',
-  }
+  },
 });
 
 Vue.use(Vuex)
-Vue.use(ElementUI, {size: 'large'})
+Vue.use(ElementUI, { size: 'large' })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
   // template: '<App/>',
   // components: { App },
 })

@@ -9,29 +9,28 @@
 </template>
 
 <script>
-import {createNamespacedHelpers} from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
 import HouseItemCard from './HouseItemCard'
 
-const { mapGetters, mapActions} = createNamespacedHelpers('house')
+const { mapGetters } = createNamespacedHelpers('house')
 
 export default {
   name: 'HouseList',
   components: { HouseItemCard },
-  mounted(){
-    if(!this.$route.query.search){
+  mounted() {
+    if (!this.$route.query.search) {
       this.getHouses()
-      }
-      
+    }
   },
   computed: {
     ...mapGetters(['houses']),
   },
   methods: {
-    getHouses(){
+    getHouses() {
       this.$store.dispatch('house/getHouses', {
-        search : null
+        search: null,
       })
-    }
+    },
   },
 }
 </script>

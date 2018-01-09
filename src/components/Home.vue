@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
-import HouseList from './HouseList'
 import BigSearch from '@/components/BigSearch'
+import HouseList from './HouseList'
+
 export default {
   name: 'Home',
   components: { HouseList, BigSearch },

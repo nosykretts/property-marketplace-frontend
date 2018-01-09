@@ -20,15 +20,16 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-const { mapGetters, mapActions, mapMutations, mapState } = createNamespacedHelpers ('notify')
 import { Message } from 'element-ui'
 import TopHeader from '@/components/TopHeader'
+
+const { mapGetters } = createNamespacedHelpers('notify')
 
 export default {
   name: 'app',
   components: {
     TopHeader,
-  },  
+  },
   data() {
     return {}
   },
@@ -37,16 +38,16 @@ export default {
   },
   methods: {
     showMessage() {
-      Message({ ...this.notify})
+      Message({ ...this.notify })
     },
   },
   watch: {
     notify: {
       deep: true,
-      handler : function() {
+      handler() {
         this.showMessage()
-      }
-    }
+      },
+    },
   },
 
 }

@@ -15,12 +15,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
       email: null,
-      password: null
+      password: null,
     }
   },
   methods: {
